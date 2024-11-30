@@ -2,7 +2,9 @@
   "name": "the_internet",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:showcase" : "npx playwright test --headed --project=chromium"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
