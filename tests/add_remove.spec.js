@@ -29,7 +29,7 @@ test.describe("add/remove page tests", () => {
     await expect(newButtons).toHaveCount(randNum);
   });
 
-  test.only("Delete an element", async ({ page }) => {
+  test("Delete an element", async ({ page }) => {
     const addButton = page.getByRole("button", { name: "Add" });
     for (let i = 0; i < 5; i++) await addButton.click(); // add 5 elements to the page
 
