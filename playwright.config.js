@@ -1,5 +1,6 @@
 // @ts-check
 const { defineConfig, devices } = require("@playwright/test");
+const credentials = require("./credentials.json"); // credentials.json file would normally be ignored by git to hide http credentials
 
 /**
  * Read environment variables from file.
@@ -30,6 +31,11 @@ module.exports = defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
+
+    httpCredentials: {
+      username: credentials.username,
+      password: credentials.password,
+    },
   },
 
   /* Configure projects for major browsers */
