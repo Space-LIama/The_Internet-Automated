@@ -7,9 +7,9 @@ Automated E2E tests for [The Internet](https://the-internet.herokuapp.com/) webs
 
 Clone this repo and run `npm run test:showcase`.This command will run all tests in Chrome browser in headed mode (browser window will be visible)
 
-## Framewroks used
+## Frameworks used
 
-This project is created using Microsoft [Playwright](https://playwright.dev/) framework.
+This project is created using Microsoft [Playwright](https://playwright.dev/) framework with JS.
 
 ## Credits
 
