@@ -19,4 +19,10 @@ test.describe("main page tests", () => {
     await link.click();
     await expect(page).toHaveURL(/.*add_remove_elements/);
   });
+
+  test("Broken Images link test", async ({ page }) => {
+    const link = page.getByRole("link", { name: "Broken" });
+    await link.click();
+    await expect(page).toHaveURL(/.*broken_images/);
+  });
 });
