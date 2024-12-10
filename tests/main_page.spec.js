@@ -37,4 +37,10 @@ test.describe("main page tests", () => {
     await link.click();
     await expect(page).toHaveURL(/.*checkboxes/);
   });
+
+  test("Context menu link test", async ({ page }) => {
+    const link = page.getByRole("link", { name: "Context" });
+    await link.click();
+    await expect(page).toHaveURL(/.*context_menu/);
+  });
 });
