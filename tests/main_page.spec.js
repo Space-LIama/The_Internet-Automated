@@ -31,4 +31,10 @@ test.describe("main page tests", () => {
     await link.click();
     await expect(page).toHaveURL(/.*challenging_dom/);
   });
+
+  test("Checkboxes link test", async ({ page }) => {
+    const link = page.getByRole("link", { name: "Checkboxes" });
+    await link.click();
+    await expect(page).toHaveURL(/.*checkboxes/);
+  });
 });
