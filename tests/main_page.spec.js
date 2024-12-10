@@ -25,4 +25,10 @@ test.describe("main page tests", () => {
     await link.click();
     await expect(page).toHaveURL(/.*broken_images/);
   });
+
+  test("Challenging DOM link test", async ({ page }) => {
+    const link = page.getByRole("link", { name: "Challenging" });
+    await link.click();
+    await expect(page).toHaveURL(/.*challenging_dom/);
+  });
 });

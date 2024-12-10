@@ -34,7 +34,7 @@ test.describe("Challengin DOM page tests", () => {
       }
     });
 
-    test.only("Canvas change after button click", async ({ page }) => {
+    test("Canvas change after button click", async ({ page }) => {
       const canvas = page.locator("#canvas");
 
       for (let i = 0; i < 3; i++) {
@@ -63,6 +63,22 @@ test.describe("Challengin DOM page tests", () => {
 
         console.log("Screenshot directory deleted");
       });
+    });
+  });
+
+  test.describe("table element tests", () => {
+    test("Click on all of the edit links", async ({ page }) => {
+      const editLinks = page.getByRole("link", { name: "edit" });
+      await page.waitForLoadState("domcontentloaded"); // waiting for DOM to load because of .all() in the next line
+
+      for (const link of await editLinks.all()) await link.click(); // Going through edit links and clicking on each one
+    });
+
+    test("Click on all of the delete links", async ({ page }) => {
+      const editLinks = page.getByRole("link", { name: "delete" });
+      await page.waitForLoadState("domcontentloaded"); // waiting for DOM to load because of .all() in the next line
+
+      for (const link of await editLinks.all()) await link.click(); // Going through edit links and clicking on each one
     });
   });
 });
