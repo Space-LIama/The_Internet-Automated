@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test:showcase" : "npx playwright test --headed --project=chromium"
+    "test:showcase": "npx playwright test --headed --project=chromium"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +14,7 @@
     "@types/node": "^22.9.4"
   },
   "dependencies": {
-    "npm": "^10.9.1"
+    "npm": "^10.9.1",
+    "tesseract.js": "^5.1.1"
   }
 }
