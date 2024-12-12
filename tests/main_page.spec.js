@@ -43,4 +43,10 @@ test.describe("main page tests", () => {
     await link.click();
     await expect(page).toHaveURL(/.*context_menu/);
   });
+
+  test("Disappeaing elements link test", async ({ page }) => {
+    const link = page.getByRole("link", { name: "Disappearing" });
+    await link.click();
+    await expect(page).toHaveURL(/.*disappearing_elements/);
+  });
 });
