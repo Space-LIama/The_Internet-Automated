@@ -49,4 +49,10 @@ test.describe("main page tests", () => {
     await link.click();
     await expect(page).toHaveURL(/.*disappearing_elements/);
   });
+
+  test("Drag and drop link test", async ({ page }) => {
+    const link = page.getByRole("link", { name: "Drag" });
+    await link.click();
+    await expect(page).toHaveURL(/.*drag_and_drop/);
+  });
 });
