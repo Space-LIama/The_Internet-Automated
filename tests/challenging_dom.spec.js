@@ -54,9 +54,7 @@ test.describe("Challengin DOM page tests", () => {
 
         expect(resBefore).not.toEqual(resAfter); // checking that the canvas has changed after the button click
       }
-    });
 
-    test.afterAll("Delete the screenshots", async () => {
       // deleting screenshots directory used for the canvas tests
       fs.rm("canvasScrs", { recursive: true, force: true }, (err) => {
         if (err) throw err;
