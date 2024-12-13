@@ -55,4 +55,10 @@ test.describe("main page tests", () => {
     await link.click();
     await expect(page).toHaveURL(/.*drag_and_drop/);
   });
+
+  test("Dropdown link test", async ({ page }) => {
+    const link = page.getByRole("link", { name: "Dropdown" });
+    await link.click();
+    await expect(page).toHaveURL(/.*dropdown/);
+  });
 });
