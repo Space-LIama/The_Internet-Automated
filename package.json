@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test:showcase": "npx playwright test --headed --project=chromium"
+    "test:showcase": "npx playwright test --headed --project=chromium",
+    "install": "npx playwright install"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@playwright/test": "^1.49.0",
+    "@playwright/test": "^1.49.1",
     "@types/node": "^22.9.4"
   },
   "dependencies": {
