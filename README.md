@@ -5,7 +5,11 @@ Automated E2E tests for [The Internet](https://the-internet.herokuapp.com/) webs
 
 ## How to use
 
-Clone this repo and run `npm run test:showcase`.This command will run all tests in Chrome browser in headed mode (browser window will be visible)
+Before cloning this repo make sure you have node.js and npm installed. You can download them [here](https://nodejs.org/en)
+
+Clone this repo and run `npm install`. This will set the dependencies and download browsers for the project to run
+
+Now you can run `npm run test:showcase`.This command will run all tests in Chrome browser in headed mode (browser window will be visible)
 
 ## Frameworks used
 
