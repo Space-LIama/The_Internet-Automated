@@ -33,11 +33,35 @@ test.describe("Dynamic controls page tests", () => {
       const message = page.locator("#message");
 
       await removeButton.click();
-      await expect(message).toHaveText("It's gone!");
+      await expect.soft(message).toHaveText("It's gone!");
 
       await addButton.click();
-      await expect(message).toHaveText("It's back!");
+      await expect.soft(message).toHaveText("It's back!");
       await expect(checkbox).not.toBeChecked();
+    });
+  });
+
+  test.describe("Input field tests", () => {
+    test("Initial input field test", async ({ page }) => {
+      const inputField = page.getByRole("textbox");
+      await expect(inputField).toBeDisabled();
+    });
+
+    test("Full input field test", async ({ page }) => {
+      const inputField = page.getByRole("textbox");
+      const enableButton = page.getByRole("button", { name: "Enable" });
+      const disableButton = page.getByRole("button", { name: "Disable" });
+      const message = page.locator("#message");
+
+      await enableButton.click();
+      await expect.soft(message).toHaveText("It's enabled!");
+      await expect(inputField).toBeEnabled();
+
+      await inputField.fill("This is a test input");
+
+      await disableButton.click();
+      await expect.soft(message).toHaveText("It's disabled!");
+      await expect(inputField).toBeDisabled();
     });
   });
 });
