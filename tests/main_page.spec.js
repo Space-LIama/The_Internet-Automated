@@ -68,7 +68,7 @@ test.describe("main page tests", () => {
     await expect(page).toHaveURL(/.*dynamic_content/);
   });
 
-  test.only("Dynamic controls link test", async ({ page }) => {
+  test("Dynamic controls link test", async ({ page }) => {
     const link = page.getByRole("link", { name: "Dynamic Controls" });
     await link.click();
     await expect(page).toHaveURL(/.*dynamic_controls/);
