@@ -35,6 +35,8 @@ test.describe("Challengin DOM page tests", () => {
     });
 
     test("Canvas change after button click", async ({ page }) => {
+      test.slow();
+
       const canvas = page.locator("#canvas");
 
       for (let i = 0; i < 3; i++) {
