@@ -34,4 +34,29 @@ test.describe("Dynamic loading page tests", () => {
       await expect(element).toBeVisible({ timeout: 10_000 });
     });
   });
+
+  test.describe("Rendered after elements tests", () => {
+    test.beforeEach(
+      "Go to the rendered after elements page",
+      async ({ page }) => {
+        const link = page.getByRole("link", { name: "Example 2" });
+        await link.click();
+      }
+    );
+
+    test("Rendered after elements page test", async ({ page }) => {
+      const heading = page.getByRole("heading", { name: "Example 2" });
+      await expect(heading).toHaveText(
+        "Example 2: Element rendered after the fact"
+      );
+    });
+
+    test("Rendered after elements test", async ({ page }) => {
+      const button = page.getByRole("button", { name: "Start" });
+      const element = page.locator("#finish");
+
+      await button.click();
+      await expect(element).toBeVisible({ timeout: 10_000 });
+    });
+  });
 });
