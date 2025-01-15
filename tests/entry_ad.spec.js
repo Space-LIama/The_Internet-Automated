@@ -1,7 +1,7 @@
 const { test, expect } = require("@playwright/test");
 
 test.describe("Entry ad page tests", () => {
-  test.only("Entry ad test", async ({ page }) => {
+  test("Entry ad test", async ({ page }) => {
     // this test requres a set of sequential actions to be performed.
     // To preserve the browser state I've decided to go with a longer test case with multiple assertions,
     // even though in breaks the modularity principles
