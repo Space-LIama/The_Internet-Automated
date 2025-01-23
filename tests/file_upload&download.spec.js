@@ -54,8 +54,9 @@ test.describe("File download page tests", () => {
     const path = await download.path(); // in case of dowload failure this methid will throw exception and fail the test
 
     const fileContent = await fs.readFile(path);
-    const fileData = fileContent.toString();
+    const fileData = JSON.parse(fileContent);
     console.log(`File content:${fileData}`);
-    // expect(fileData).toBe("Sample");
+    expect(fileData.question).toContain("The ultimate");
+    expect(fileData.answer).toBe(42);
   });
 });
