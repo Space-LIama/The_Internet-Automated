@@ -1,36 +1,43 @@
 const { test, expect } = require("@playwright/test");
 
 test.describe("Entry ad page tests", () => {
-  test("Entry ad test", async ({ page }) => {
-    // this test requres a set of sequential actions to be performed.
-    // To preserve the browser state I've decided to go with a longer test case with multiple assertions,
-    // even though in breaks the modularity principles
+  let context, page;
+  // For this test I need to preserve browser state to verify that ad modal shows up only on first page entry
+  // So the common browser context is created for all tests in this file
+  test.beforeAll(async ({ browser }) => {
+    context = await browser.newContext();
+    page = await context.newPage();
+  });
 
-    // navigating to the test page
+  test.afterAll(async () => {
+    await context.close();
+  });
+
+  let modal;
+  test.beforeEach("Go to the entry ad page", async () => {
     await page.goto("/");
     const testPageLink = page.getByRole("link", { name: "Entry" });
     await testPageLink.click();
 
-    // Verifying that modal window is displayed to the user on the first entry
-    const modal = page.locator("#modal");
+    modal = page.locator("#modal");
+  });
+
+  test("First entry ad encounter test", async () => {
     await expect(modal).toBeVisible();
     const modalHeader = modal.getByRole("heading");
     await expect(modalHeader).toHaveText("This is a modal window");
     const closeButton = modal.getByText("Close");
     await closeButton.click();
+  });
 
-    // Verifying that after going back and coming back to the same page the modal is not visible to the user
-    await page.goBack();
-    await testPageLink.click();
-    await page.waitForLoadState("domcontentloaded");
+  test("Ad absence test after the first encounter", async () => {
+    await page.waitForEvent("domcontentloaded");
     await expect(modal).not.toBeVisible();
+  });
 
-    // Verifying the re-enable functionality
+  test("Ad re-enable link test", async () => {
     const reEnableLink = page.getByRole("link", { name: "click here" });
     await reEnableLink.click();
-
-    await page.goBack();
-    await testPageLink.click();
     await expect(modal).toBeVisible();
   });
 });
